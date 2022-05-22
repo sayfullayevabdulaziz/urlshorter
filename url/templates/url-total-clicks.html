@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Total Url CLicks</title>{% endblock title %}
+
+{% block header %}
+<header>
+    <div id='top' style='background:#fff; box-shadow:0 1px 4px #ccc'>
+        <div id="logo"><a href="/" class="logo">Short URL</a></div>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+
+    <main>
+        <section id="content">
+            <h1>Total URL Clicks</h1>
+            <p>The total number of clicks that your link has received so far.</p>
+            <div class="squarebox">
+                <b>{{ counter }}</b>
+            </div>
+            <p>Our tool will count each click as one hit to the long URL, even if there are multiple clicks from the same person or device. Check <a href="url-click-counter">the total number of clicks</a> from other URL.<br>
+            <p><a href="" class="colorbutton">Create other shortened URL</a></p>
+        </section>
+    </main>
+
+{% endblock content %}

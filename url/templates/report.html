@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Report Malicious Url</title>{% endblock title %}
+
+{% block header %}
+<header>
+    <div id='top' style='background:#fff; box-shadow:0 1px 4px #ccc'>
+        <div id="logo"><a href="/" class="logo">Short URL</a></div>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<main>
+    <section id="content">
+        <h1>Report Malicious Short Link</h1>
+        <p>Use the form below to report URLs that are distributing spam and malware. Help us by sending links that are against our terms of use, we will delete and block these shortened links. If spammers are sending you e-mails containing our shortened URLs, tell us and we can take quick action to avoid the distribution of inappropriate links.</p>
+        <div id="formbox">
+            <form method="post">
+                <p class="formtext">Invalid or malicious URL<br>
+                    <input name="url" type="text" style="width: 100%; max-width: 300px;"required>
+                </p>
+                <p class="formtext">Comment<br>
+                    <textarea name="comment" style="width: 100%; max-width: 300px; height: 80px;" required></textarea>
+                </p>
+                <p class="formtext">{{ a }} + {{ b }} = <input name="result" type="text" style="width: 100%; max-width: 40px;" required>
+                </p>
+                <p id="button">
+                    <input value="Send" type="submit" class="bgcolor:blue;"> 
+                    <input value="Clean" type="reset">
+                </p>
+                {% csrf_token %}
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock content %}

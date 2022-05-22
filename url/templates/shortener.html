@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Shortened URL</title>{% endblock title %}
+
+{% block header %}
+<header>
+    <div id='top' style='background:#fff; box-shadow:0 1px 4px #ccc'>
+        <div id="logo"><a href="/" class="logo">Short URL</a></div>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<main>
+  <section id="content">
+    <h1>Your shortened URL</h1>
+    <p>Copy the shortened link and share it in messages, texts, posts, websites and other locations.</p>
+  </section>
+  <section id="urlbox">
+    <br><br>
+  <div id="formurl" style="max-width: 400px;">
+    <input id="shortenurl" type="text" value="{{ new_url }}" onClick="this.select();">
+    <div id="formbutton">
+      <input type="button" data-clipboard-target="#shortenurl" class="copy" value="Copy URL" onclick="toggle_visibility('balloon');">
+    </div>
+  </div>
+  <div id="formurl" style="max-width: 400px; display: block;">
+    <div id="balloon" style="display: none;">URL Copied</div>
+  </div>
+  <p class="boxtextleft">Long URL: <a href="{{ old_url }}" target="_blank">{{ old_url }}</a><br><br>
+
+    Track <a href="url-click-counter">the total of clicks</a> in real-time from your shortened URL.<br>
+    Create other <a href="">shortened URL</a>.
+  </p>
+  </section>
+<section id="content">
+<h2>Share URL</h2>
+<div class="socialnetworkbox">
+<p>
+<a class="snb snbfacebook" href="https://www.facebook.com/" data-cf-modified-16829225666b83d3994e1cf0-="">Facebook</a>
+<a class="snb snbtwitter" href="https://twitter.com/" data-cf-modified-16829225666b83d3994e1cf0-="">Twitter</a>
+<a class="snb snbpinterest" href="https://pinterest.com/" data-cf-modified-16829225666b83d3994e1cf0-="">Pinterest</a>
+<a class="snb snbtumblr" href="https://www.tumblr.com/" data-cf-modified-16829225666b83d3994e1cf0-="">Tumblr</a>
+<a class="snb snbwhatsapp" href="whatsapp://send?text=localhost:8000/">WhatsApp</a>
+</p>
+</div>
+</section>
+</main>
+{% endblock content %}
+{% block js %}
+<script>
+    function toggle_visibility(id) {
+    
+        var e = document.getElementById(id);
+        if(e.style.display == "none"){
+            e.style.display = "table"
+        };
+        
+        var copyText = document.getElementById("shortenurl");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+      
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+    }
+</script>
+{% endblock js %}
+</html>
